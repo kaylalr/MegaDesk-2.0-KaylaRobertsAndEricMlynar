@@ -1,6 +1,6 @@
 ﻿namespace MegaDesk_3_KaylaRoberts
 {
-    partial class Form1
+    partial class DisplayQuote
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.cancelQuoteBtn = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // cancelQuoteBtn
+            // 
+            this.cancelQuoteBtn.Location = new System.Drawing.Point(218, 86);
+            this.cancelQuoteBtn.Name = "cancelQuoteBtn";
+            this.cancelQuoteBtn.Size = new System.Drawing.Size(225, 65);
+            this.cancelQuoteBtn.TabIndex = 2;
+            this.cancelQuoteBtn.Text = "Cancel";
+            this.cancelQuoteBtn.UseVisualStyleBackColor = true;
+            this.cancelQuoteBtn.Click += new System.EventHandler(this.cancelQuoteBtn_Click);
+            // 
+            // DisplayQuote
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.cancelQuoteBtn);
+            this.Name = "DisplayQuote";
+            this.Text = "DisplayQuote";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button cancelQuoteBtn;
     }
 }
-

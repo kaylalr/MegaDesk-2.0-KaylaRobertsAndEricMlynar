@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace MegaDesk_3_KaylaRoberts
 {
-    public partial class Form1 : Form
+    public partial class AddQuote : Form
     {
-        public Form1()
+        public AddQuote()
         {
             InitializeComponent();
+        }
+
+        private void cancelQuoteBtn_Click(object sender, EventArgs e)
+        {
+            var mainMenu = (MainMenu)Tag;
+            mainMenu.Show();
+            Close();
         }
     }
 }
