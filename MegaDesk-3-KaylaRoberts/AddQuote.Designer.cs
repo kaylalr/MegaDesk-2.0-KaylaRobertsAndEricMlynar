@@ -85,8 +85,6 @@
             0,
             0,
             0});
-            this.widthInput.Validating += new System.ComponentModel.CancelEventHandler(this.widthInput_Validating);
-            this.widthInput.Validated += new System.EventHandler(this.widthInput_Validated);
             // 
             // depthInput
             // 
