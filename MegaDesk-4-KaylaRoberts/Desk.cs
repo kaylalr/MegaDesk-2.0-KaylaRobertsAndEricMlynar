@@ -12,7 +12,7 @@ namespace MegaDesk_3_KaylaRoberts
         {
             Oak,
             Rosewood,
-            Venear,
+            Veneer,
             Pine,
             Laminate
         }
@@ -21,6 +21,6 @@ namespace MegaDesk_3_KaylaRoberts
         public int Width { get; set; }
         public int Depth { get; set; }
         public int NumOfDrawers { get; set; }
-        public SurfaceMaterial DeskeMaterial { get; set; }
+        public SurfaceMaterial DeskMaterial { get; set; }
     }
 }
