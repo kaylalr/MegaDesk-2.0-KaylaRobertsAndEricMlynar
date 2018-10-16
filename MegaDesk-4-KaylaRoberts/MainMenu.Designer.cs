@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.addQuoteBtn = new System.Windows.Forms.Button();
             this.viewAllQuotesBtn = new System.Windows.Forms.Button();
             this.searchQuotesBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
+            this.deskImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.deskImage)).BeginInit();
             this.SuspendLayout();
             // 
             // addQuoteBtn
@@ -78,11 +81,23 @@
             this.exitBtn.UseVisualStyleBackColor = true;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
+            // deskImage
+            // 
+            this.deskImage.ErrorImage = ((System.Drawing.Image)(resources.GetObject("deskImage.ErrorImage")));
+            this.deskImage.Image = ((System.Drawing.Image)(resources.GetObject("deskImage.Image")));
+            this.deskImage.InitialImage = ((System.Drawing.Image)(resources.GetObject("deskImage.InitialImage")));
+            this.deskImage.Location = new System.Drawing.Point(454, 113);
+            this.deskImage.Name = "deskImage";
+            this.deskImage.Size = new System.Drawing.Size(227, 224);
+            this.deskImage.TabIndex = 4;
+            this.deskImage.TabStop = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.deskImage);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.searchQuotesBtn);
             this.Controls.Add(this.viewAllQuotesBtn);
@@ -90,6 +105,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainMenu";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.deskImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -100,6 +116,7 @@
         private System.Windows.Forms.Button viewAllQuotesBtn;
         private System.Windows.Forms.Button searchQuotesBtn;
         private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.PictureBox deskImage;
     }
 }
 
