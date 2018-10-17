@@ -9,16 +9,16 @@ namespace MegaDesk_3_KaylaRoberts
     public class DeskQuote
     {
         // constants
-        const decimal BASE_DESK_PRICE = 200.00M;
-        const decimal RUSH_3DAY_LESS_THAN_1000 = 60.00M;
-        const decimal RUSH_3DAY_LESS_THAN_2000 = 70.00M;
-        const decimal RUSH_3DAY_GRATER_THAN_2000 = 80.00M;
-        const decimal RUSH_5DAY_LESS_THAN_1000 = 40.00M;
-        const decimal RUSH_5DAY_LESS_THAN_2000 = 50.00M;
-        const decimal RUSH_5DAY_GREATER_THAN_1000 = 60.00M;
-        const decimal RUSH_7DAY_LESS_THAN_1000 = 30.00M;
-        const decimal RUSH_7DAY_LESS_THAN_2000 = 35.00M;
-        const decimal RUSH_7DAY_GREATER_THAN_1000 = 40.00M;
+        const int BASE_DESK_PRICE = 200;
+        const int RUSH_3DAY_LESS_THAN_1000 = 60;
+        const int RUSH_3DAY_LESS_THAN_2000 = 70;
+        const int RUSH_3DAY_GREATER_THAN_2000 = 80;
+        const int RUSH_5DAY_LESS_THAN_1000 = 40;
+        const int RUSH_5DAY_LESS_THAN_2000 = 50;
+        const int RUSH_5DAY_GREATER_THAN_1000 = 60;
+        const int RUSH_7DAY_LESS_THAN_1000 = 30;
+        const int RUSH_7DAY_LESS_THAN_2000 = 35;
+        const int RUSH_7DAY_GREATER_THAN_1000 = 40;
 
 
         public int DeskQuoteID { get; set; }
@@ -77,43 +77,43 @@ namespace MegaDesk_3_KaylaRoberts
                 case 3:
                     if (surfaceArea < 1000)
                     {
-                        shippingPrice = 60;
+                        shippingPrice = RUSH_3DAY_LESS_THAN_1000;
                     }
                     else if (surfaceArea < 2000)
                     {
-                        shippingPrice = 70;
+                        shippingPrice = RUSH_3DAY_LESS_THAN_2000;
                     }
                     else
                     {
-                        shippingPrice = 80;
+                        shippingPrice = RUSH_3DAY_GREATER_THAN_2000;
                     }
                     break;
                 case 5:
                     if (surfaceArea < 1000)
                     {
-                        shippingPrice = 40;
+                        shippingPrice = RUSH_5DAY_LESS_THAN_1000;
                     }
                     else if (surfaceArea < 2000)
                     {
-                        shippingPrice = 50;
+                        shippingPrice = RUSH_5DAY_LESS_THAN_2000;
                     }
                     else
                     {
-                        shippingPrice = 60;
+                        shippingPrice = RUSH_5DAY_GREATER_THAN_1000;
                     }
                     break;
                 case 7:
                     if (surfaceArea < 1000)
                     {
-                        shippingPrice = 30;
+                        shippingPrice = RUSH_7DAY_LESS_THAN_1000;
                     }
                     else if (surfaceArea < 2000)
                     {
-                        shippingPrice = 35;
+                        shippingPrice = RUSH_7DAY_LESS_THAN_2000;
                     }
                     else
                     {
-                        shippingPrice = 40;
+                        shippingPrice = RUSH_7DAY_GREATER_THAN_1000;
                     }
                     break;
                 default:
