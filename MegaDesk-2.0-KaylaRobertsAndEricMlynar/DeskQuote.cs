@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MegaDesk_3_KaylaRoberts
 {
     public class DeskQuote
-    {
+    { 
+
         // constants
         const int BASE_DESK_PRICE = 200;
         const int RUSH_3DAY_LESS_THAN_1000 = 60;
@@ -71,6 +73,8 @@ namespace MegaDesk_3_KaylaRoberts
                     break;
             }
 
+            getRushOrder(@"rushOrderPrices.txt");
+
             var shippingPrice = 0;
             switch (Shipping)
             {
@@ -124,6 +128,24 @@ namespace MegaDesk_3_KaylaRoberts
             var totalPrice = 200 + surfaceAreaPrice + numOfDrawersPrice + surfaceMaterialPrice + shippingPrice;
 
             return totalPrice;
+        }
+
+        private void getRushOrder(string v)
+        {
+            String[] shippingArray = File.ReadAllLines(v);
+
+            String[ , ] prices = new String[3,3];
+
+            int k = 0;
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    prices[i,j] = shippingArray[k];
+                    k++;
+                }
+            }
         }
     }
 }
