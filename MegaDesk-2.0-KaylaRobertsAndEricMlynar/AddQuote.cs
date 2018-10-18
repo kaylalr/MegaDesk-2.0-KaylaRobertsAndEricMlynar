@@ -129,17 +129,38 @@ namespace MegaDesk_3_KaylaRoberts
             //    Shipping = deskQuote.Shipping,
             //    Price = deskQuote.Price
             //});
+            
+            var quotesFile = @"quotes.json";
 
-            SaveQuotes(deskQuote);
+            if (File.Exists(quotesFile))
+            {
+                using (StreamReader reader = new StreamReader(quotesFile))
+                {
+                    string quotes = reader.ReadToEnd();
+
+                    List<DeskQuote> currentQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                    currentQuotes.Add(deskQuote);
+
+                    SaveQuotes(currentQuotes);
+                }
+            }
+            else
+            {
+                List<DeskQuote> currentQuotes = new List<DeskQuote>();
+                currentQuotes.Add(deskQuote);
+                SaveQuotes(currentQuotes);
+            }
         }
 
-        private void SaveQuotes(DeskQuote deskQuote)
+        private void SaveQuotes(List<DeskQuote> currentQuotes)
         {
             var quotesFile = @"quotes.json";
 
-            string jsonFile = JsonConvert.SerializeObject(deskQuote);
+            var quotes = JsonConvert.SerializeObject(currentQuotes);
 
-            System.IO.File.WriteAllText(quotesFile, jsonFile);
+            File.WriteAllText(quotesFile, quotes);
+
         }
     }
 }

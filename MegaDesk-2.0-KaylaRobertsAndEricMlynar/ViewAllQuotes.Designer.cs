@@ -53,6 +53,7 @@
             // 
             // quotesGrid
             // 
+            this.quotesGrid.AllowUserToAddRows = false;
             this.quotesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.quotesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dateTime,
