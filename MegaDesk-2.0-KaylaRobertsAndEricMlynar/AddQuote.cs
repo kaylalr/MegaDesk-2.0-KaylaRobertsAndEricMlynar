@@ -58,9 +58,9 @@ namespace MegaDesk_3_KaylaRoberts
             Rush (5 days)
             Rush (3 days)
              */
-            var shippingChoice = shippingDropDown.SelectedValue;
+            var shippingChoice = shippingDropDown.SelectedText;
             var shippingTime = 0;
-            switch(shippingChoice)
+            switch(shippingChoice.ToString())
             {
                 case "Rush (7 days)":
                     shippingTime = 7;
@@ -91,7 +91,7 @@ namespace MegaDesk_3_KaylaRoberts
             shippingDropDown.Enabled = false;
 
             DateTime dateTime = DateTime.Now;
-            var date = dateTime.ToString("MM/dd/yyyy HH:mm");
+            deskQuote.QuoteDate = dateTime;
 
 
             //String quotesFile = @"quotes.txt";
