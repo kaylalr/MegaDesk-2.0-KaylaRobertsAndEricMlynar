@@ -94,22 +94,22 @@ namespace MegaDesk_3_KaylaRoberts
             deskQuote.QuoteDate = dateTime;
 
 
-            //String quotesFile = @"quotes.txt";
-            //using (StreamWriter streamWriter = File.AppendText(quotesFile))
-            //{
-            //    streamWriter.WriteLine
-            //        (
-            //        //Date, time, name, depth, width, numDrawers, material, shipping, somethingElse ?
-            //        date + "," +
-            //        deskQuote.CustomerName + "," +
-            //        deskQuote.Desk.Width + "," +
-            //        deskQuote.Desk.Depth + "," +
-            //        deskQuote.Desk.NumOfDrawers + "," +
-            //        deskQuote.Desk.DeskMaterial + "," +
-            //        deskQuote.Shipping + "," +
-            //        deskQuote.Price
-            //        );
-            //}
+            String quotesFile = @"quotes.txt";
+            using (StreamWriter streamWriter = File.AppendText(quotesFile))
+            {
+                streamWriter.WriteLine
+                    (
+                    //Date, time, name, depth, width, numDrawers, material, shipping, somethingElse ?
+                    deskQuote.QuoteDate + "," +
+                    deskQuote.CustomerName + "," +
+                    deskQuote.Desk.Width + "," +
+                    deskQuote.Desk.Depth + "," +
+                    deskQuote.Desk.NumOfDrawers + "," +
+                    deskQuote.Desk.DeskMaterial + "," +
+                    deskQuote.Shipping + "," +
+                    deskQuote.Price
+                    );
+            }
             //if (custNameTxt.Text == null)
             //{
 
