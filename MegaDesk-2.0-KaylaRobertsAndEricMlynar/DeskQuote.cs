@@ -32,10 +32,10 @@ namespace MegaDesk_3_KaylaRoberts
 
         public enum Delivery
         {
-            Rush3Day,
-            Rush5Day,
-            Rush7Day,
-            Normal14Day
+            Rush_3_Day,
+            Rush_5_Day,
+            Rush_7_Day,
+            Normal_14_Day
         }
 
         public decimal GetQuote()

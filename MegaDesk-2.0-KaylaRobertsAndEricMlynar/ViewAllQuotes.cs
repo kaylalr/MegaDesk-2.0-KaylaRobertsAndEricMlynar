@@ -87,13 +87,14 @@ namespace MegaDesk_3_KaylaRoberts
                 //source.ResetBindings(true);
                 //quotesGrid.DataSource = source;
 
-               // quotesGrid.DataSource = allQuotes;
+                // quotesGrid.DataSource = allQuotes;
 
 
-                //quotesGrid.DataSource = allQuotes.Select(d-> new
-                //{
-                //    customerName = d.customerName
-                //}).ToList();
+                quotesGrid.DataSource = allQuotes.Select(d => new
+                {
+                    CustomerName = d.CustomerName,
+
+                }).ToList();
 
             }
         }

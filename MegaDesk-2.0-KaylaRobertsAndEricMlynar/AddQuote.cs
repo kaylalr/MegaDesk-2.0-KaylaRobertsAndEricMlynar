@@ -38,6 +38,14 @@ namespace MegaDesk_3_KaylaRoberts
                 .ToList();
 
             surfaceMaterialDropDown.DataSource = materials;
+
+            var shippingTimes = new List<DeskQuote.Delivery>();
+
+            shippingTimes = Enum.GetValues(typeof(DeskQuote.Delivery))
+                .Cast<DeskQuote.Delivery>()
+                .ToList();
+
+            shippingDropDown.DataSource = shippingTimes;
         }
 
         private void addQuoteBtn_Click(object sender, EventArgs e)
@@ -58,24 +66,24 @@ namespace MegaDesk_3_KaylaRoberts
             Rush (5 days)
             Rush (3 days)
              */
-            var shippingChoice = shippingDropDown.SelectedText;
+            var shippingChoice = shippingDropDown.SelectedValue;
             var shippingTime = 0;
-            switch(shippingChoice.ToString())
+            switch (shippingChoice)
             {
-                case "Rush (7 days)":
+                case DeskQuote.Delivery.Rush_7_Day:
                     shippingTime = 7;
                     break;
-                case "Rush (5 days)":
+                case DeskQuote.Delivery.Rush_5_Day:
                     shippingTime = 5;
                     break;
-                case "Rush (3 days)":
+                case DeskQuote.Delivery.Rush_3_Day:
                     shippingTime = 3;
                     break;
                 default:
                     shippingTime = 14;
                     break;
             }
-            
+
             deskQuote.CustomerName = custNameTxt.Text;
             deskQuote.Shipping = shippingTime;
 
@@ -94,22 +102,22 @@ namespace MegaDesk_3_KaylaRoberts
             deskQuote.QuoteDate = dateTime;
 
 
-            String quotesFile = @"quotes.txt";
-            using (StreamWriter streamWriter = File.AppendText(quotesFile))
-            {
-                streamWriter.WriteLine
-                    (
-                    //Date, time, name, depth, width, numDrawers, material, shipping, somethingElse ?
-                    deskQuote.QuoteDate + "," +
-                    deskQuote.CustomerName + "," +
-                    deskQuote.Desk.Width + "," +
-                    deskQuote.Desk.Depth + "," +
-                    deskQuote.Desk.NumOfDrawers + "," +
-                    deskQuote.Desk.DeskMaterial + "," +
-                    deskQuote.Shipping + "," +
-                    deskQuote.Price
-                    );
-            }
+            //String quotesFile = @"quotes.txt";
+            //using (StreamWriter streamWriter = File.AppendText(quotesFile))
+            //{
+            //    streamWriter.WriteLine
+            //        (
+            //        //Date, time, name, depth, width, numDrawers, material, shipping, somethingElse ?
+            //        deskQuote.QuoteDate + "," +
+            //        deskQuote.CustomerName + "," +
+            //        deskQuote.Desk.Width + "," +
+            //        deskQuote.Desk.Depth + "," +
+            //        deskQuote.Desk.NumOfDrawers + "," +
+            //        deskQuote.Desk.DeskMaterial + "," +
+            //        deskQuote.Shipping + "," +
+            //        deskQuote.Price
+            //        );
+            //}
             //if (custNameTxt.Text == null)
             //{
 
@@ -129,7 +137,7 @@ namespace MegaDesk_3_KaylaRoberts
             //    Shipping = deskQuote.Shipping,
             //    Price = deskQuote.Price
             //});
-            
+
             var quotesFile = @"quotes.json";
 
             if (File.Exists(quotesFile))
@@ -158,9 +166,10 @@ namespace MegaDesk_3_KaylaRoberts
             var quotesFile = @"quotes.json";
 
             var quotes = JsonConvert.SerializeObject(currentQuotes);
-
-            File.WriteAllText(quotesFile, quotes);
-
+            using (StreamWriter writer = new StreamWriter(quotesFile))
+            {
+                File.WriteAllText(quotesFile, quotes);
+            }
         }
     }
 }
