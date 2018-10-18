@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk_3_KaylaRoberts
 
@@ -92,26 +93,53 @@ namespace MegaDesk_3_KaylaRoberts
             DateTime dateTime = DateTime.Now;
             var date = dateTime.ToString("MM/dd/yyyy HH:mm");
 
-            String quotesFile = @"quotes.txt";
-            using (StreamWriter streamWriter = File.AppendText(quotesFile))
-            {
-                streamWriter.WriteLine
-                    (
-                    //Date, time, name, depth, width, numDrawers, material, shipping, somethingElse ?
-                    date + "," +
-                    deskQuote.CustomerName + "," +
-                    deskQuote.Desk.Width + "," +
-                    deskQuote.Desk.Depth + "," +
-                    deskQuote.Desk.NumOfDrawers + "," +
-                    deskQuote.Desk.DeskMaterial + "," +
-                    deskQuote.Shipping + "," +
-                    deskQuote.Price
-                    );
-            }
+
+            //String quotesFile = @"quotes.txt";
+            //using (StreamWriter streamWriter = File.AppendText(quotesFile))
+            //{
+            //    streamWriter.WriteLine
+            //        (
+            //        //Date, time, name, depth, width, numDrawers, material, shipping, somethingElse ?
+            //        date + "," +
+            //        deskQuote.CustomerName + "," +
+            //        deskQuote.Desk.Width + "," +
+            //        deskQuote.Desk.Depth + "," +
+            //        deskQuote.Desk.NumOfDrawers + "," +
+            //        deskQuote.Desk.DeskMaterial + "," +
+            //        deskQuote.Shipping + "," +
+            //        deskQuote.Price
+            //        );
+            //}
             //if (custNameTxt.Text == null)
             //{
 
             //}
+
+            //List<DeskQuote> quotes = new List<DeskQuote>();
+            //quotes.Add(new DeskQuote()
+            //{
+            //    CustomerName = deskQuote.CustomerName,
+            //    Desk =
+            //    {
+            //        Width = deskQuote.Desk.Width,
+            //        Depth = deskQuote.Desk.Depth,
+            //        NumOfDrawers = deskQuote.Desk.NumOfDrawers,
+            //        DeskMaterial = deskQuote.Desk.DeskMaterial
+            //    },
+            //    Shipping = deskQuote.Shipping,
+            //    Price = deskQuote.Price
+            //});
+
+            SaveQuotes(deskQuote);
+        }
+
+        private void SaveQuotes(DeskQuote deskQuote)
+        {
+            var quotesFile = @"quotes.json";
+
+            string jsonFile = JsonConvert.SerializeObject(deskQuote);
+
+            System.IO.File.WriteAllText(quotesFile, jsonFile);
         }
     }
 }
