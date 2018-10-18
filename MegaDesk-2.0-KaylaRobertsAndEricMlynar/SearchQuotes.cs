@@ -79,39 +79,73 @@ namespace MegaDesk_3_KaylaRoberts
             //    }
             //}
 
-            String quotesFile = @"quotes.txt";
-            StreamReader streamReader = new StreamReader(quotesFile);
-            //string[] values = null;
-            int row = 0;
+            //String quotesFile = @"quotes.txt";
+            //StreamReader streamReader = new StreamReader(quotesFile);
+            ////string[] values = null;
+            //int row = 0;
 
-            quotesGrid.Rows.Clear();
+            //quotesGrid.Rows.Clear();
 
-            while (!streamReader.EndOfStream)
+            //while (!streamReader.EndOfStream)
+            //{
+            //    string rowData = streamReader.ReadLine();
+
+            //    if (rowData.Length > 0)
+            //    {
+            //        string[] values = rowData.Split(',');
+
+            //        //foreach (string value in values)
+
+            //        if (values[5] == surfaceMaterialDropDown.SelectedValue.ToString())
+            //        {
+            //            quotesGrid.Rows.Add();
+            //            for (int i = 0; i < 8; i++)
+            //            {
+            //                quotesGrid[i, row].Value = values[i];
+            //                //quotesGrid[value, row].Value = values[value];
+            //            }
+
+            //            row++;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("There are no quotes to show.");
+            //    }
+
+            string quotesFile = @"quotes.json";
+
+            using (StreamReader reader = new StreamReader(quotesFile))
             {
-                string rowData = streamReader.ReadLine();
 
-                if (rowData.Length > 0)
+                var quotes = reader.ReadToEnd();
+
+                List<DeskQuote> allQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                //quotesGrid.AutoGenerateColumns = true;
+
+                //var source = new BindingSource();
+                ////source.DataSource = allQuotes;
+                //source.Add(allQuotes);
+                //source.ResetBindings(true);
+                //quotesGrid.DataSource = source;
+
+                // quotesGrid.DataSource = allQuotes;
+
+
+                quotesGrid.DataSource = allQuotes.Select(d => new
                 {
-                    string[] values = rowData.Split(',');
-                    
-                    //foreach (string value in values)
-
-                    if (values[5] == surfaceMaterialDropDown.SelectedValue.ToString())
-                    {
-                        quotesGrid.Rows.Add();
-                        for (int i = 0; i < 8; i++)
-                        {
-                            quotesGrid[i, row].Value = values[i];
-                            //quotesGrid[value, row].Value = values[value];
-                        }
-
-                        row++;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("There are no quotes to show.");
-                }
+                    QuoteDate = d.QuoteDate,
+                    CustomerName = d.CustomerName,
+                    Width = d.Desk.Width,
+                    Depth = d.Desk.Depth,
+                    NumOfDrawers = d.Desk.NumOfDrawers,
+                    DeskMaterial = d.Desk.DeskMaterial,
+                    Shipping = d.Shipping,
+                    Price = d.Price
+                })
+                //.Where(surfaceMaterialDropDown.SelectedValue == )
+                .ToList();
 
             }
         }

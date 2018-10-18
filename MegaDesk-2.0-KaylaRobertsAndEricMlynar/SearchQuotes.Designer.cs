@@ -30,16 +30,16 @@
         {
             this.cancelQuoteBtn = new System.Windows.Forms.Button();
             this.quotesGrid = new System.Windows.Forms.DataGridView();
+            this.surfaceMaterialDropDown = new System.Windows.Forms.ComboBox();
+            this.searchBtn = new System.Windows.Forms.Button();
             this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.width = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numOfDrawers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surfaceMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deskMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shipping = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surfaceMaterialDropDown = new System.Windows.Forms.ComboBox();
-            this.searchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.quotesGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +55,7 @@
             // 
             // quotesGrid
             // 
+            this.quotesGrid.AllowUserToAddRows = false;
             this.quotesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.quotesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dateTime,
@@ -62,7 +63,7 @@
             this.depth,
             this.width,
             this.numOfDrawers,
-            this.surfaceMaterial,
+            this.deskMaterial,
             this.shipping,
             this.price});
             this.quotesGrid.Location = new System.Drawing.Point(10, 121);
@@ -70,51 +71,6 @@
             this.quotesGrid.RowHeadersVisible = false;
             this.quotesGrid.Size = new System.Drawing.Size(780, 209);
             this.quotesGrid.TabIndex = 4;
-            // 
-            // dateTime
-            // 
-            this.dateTime.Frozen = true;
-            this.dateTime.HeaderText = "Date/Time";
-            this.dateTime.Name = "dateTime";
-            // 
-            // customerName
-            // 
-            this.customerName.Frozen = true;
-            this.customerName.HeaderText = "Customer Name";
-            this.customerName.Name = "customerName";
-            // 
-            // depth
-            // 
-            this.depth.Frozen = true;
-            this.depth.HeaderText = "Depth";
-            this.depth.Name = "depth";
-            // 
-            // width
-            // 
-            this.width.Frozen = true;
-            this.width.HeaderText = "Width";
-            this.width.Name = "width";
-            // 
-            // numOfDrawers
-            // 
-            this.numOfDrawers.Frozen = true;
-            this.numOfDrawers.HeaderText = "Number of Drawers";
-            this.numOfDrawers.Name = "numOfDrawers";
-            // 
-            // surfaceMaterial
-            // 
-            this.surfaceMaterial.HeaderText = "Surface Material";
-            this.surfaceMaterial.Name = "surfaceMaterial";
-            // 
-            // shipping
-            // 
-            this.shipping.HeaderText = "Shipping";
-            this.shipping.Name = "shipping";
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Price";
-            this.price.Name = "price";
             // 
             // surfaceMaterialDropDown
             // 
@@ -147,6 +103,59 @@
             this.searchBtn.UseVisualStyleBackColor = true;
             this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
+            // dateTime
+            // 
+            this.dateTime.DataPropertyName = "QuoteDate";
+            this.dateTime.Frozen = true;
+            this.dateTime.HeaderText = "Date/Time";
+            this.dateTime.Name = "dateTime";
+            // 
+            // customerName
+            // 
+            this.customerName.DataPropertyName = "CustomerName";
+            this.customerName.Frozen = true;
+            this.customerName.HeaderText = "Customer Name";
+            this.customerName.Name = "customerName";
+            // 
+            // depth
+            // 
+            this.depth.DataPropertyName = "Depth";
+            this.depth.Frozen = true;
+            this.depth.HeaderText = "Depth";
+            this.depth.Name = "depth";
+            // 
+            // width
+            // 
+            this.width.DataPropertyName = "Width";
+            this.width.Frozen = true;
+            this.width.HeaderText = "Width";
+            this.width.Name = "width";
+            // 
+            // numOfDrawers
+            // 
+            this.numOfDrawers.DataPropertyName = "NumOfDrawers";
+            this.numOfDrawers.Frozen = true;
+            this.numOfDrawers.HeaderText = "Number of Drawers";
+            this.numOfDrawers.Name = "numOfDrawers";
+            // 
+            // deskMaterial
+            // 
+            this.deskMaterial.DataPropertyName = "DeskMaterial";
+            this.deskMaterial.HeaderText = "Surface Material";
+            this.deskMaterial.Name = "deskMaterial";
+            // 
+            // shipping
+            // 
+            this.shipping.DataPropertyName = "Shipping";
+            this.shipping.HeaderText = "Shipping";
+            this.shipping.Name = "shipping";
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "Price";
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
+            // 
             // SearchQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,15 +177,15 @@
 
         private System.Windows.Forms.Button cancelQuoteBtn;
         private System.Windows.Forms.DataGridView quotesGrid;
+        private System.Windows.Forms.ComboBox surfaceMaterialDropDown;
+        private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn depth;
         private System.Windows.Forms.DataGridViewTextBoxColumn width;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfDrawers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn surfaceMaterial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deskMaterial;
         private System.Windows.Forms.DataGridViewTextBoxColumn shipping;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.ComboBox surfaceMaterialDropDown;
-        private System.Windows.Forms.Button searchBtn;
     }
 }

@@ -92,8 +92,14 @@ namespace MegaDesk_3_KaylaRoberts
 
                 quotesGrid.DataSource = allQuotes.Select(d => new
                 {
+                    QuoteDate = d.QuoteDate,
                     CustomerName = d.CustomerName,
-
+                    Width = d.Desk.Width,
+                    Depth = d.Desk.Depth,
+                    NumOfDrawers = d.Desk.NumOfDrawers,
+                    DeskMaterial = d.Desk.DeskMaterial,
+                    Shipping = d.Shipping,
+                    Price = d.Price
                 }).ToList();
 
             }

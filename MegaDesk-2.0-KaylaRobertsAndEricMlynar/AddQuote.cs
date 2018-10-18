@@ -142,16 +142,20 @@ namespace MegaDesk_3_KaylaRoberts
 
             if (File.Exists(quotesFile))
             {
+                List<DeskQuote> currentQuotes = new List<DeskQuote>();
+
                 using (StreamReader reader = new StreamReader(quotesFile))
                 {
                     string quotes = reader.ReadToEnd();
 
-                    List<DeskQuote> currentQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    currentQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
 
                     currentQuotes.Add(deskQuote);
 
-                    SaveQuotes(currentQuotes);
+                    
                 }
+
+                SaveQuotes(currentQuotes);
             }
             else
             {
@@ -166,10 +170,12 @@ namespace MegaDesk_3_KaylaRoberts
             var quotesFile = @"quotes.json";
 
             var quotes = JsonConvert.SerializeObject(currentQuotes);
-            using (StreamWriter writer = new StreamWriter(quotesFile))
-            {
+            //using (StreamWriter writer = new StreamWriter(quotesFile))
+            //{
                 File.WriteAllText(quotesFile, quotes);
-            }
+                
+
+            //}
         }
     }
 }

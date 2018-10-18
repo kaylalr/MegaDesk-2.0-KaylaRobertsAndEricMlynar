@@ -30,7 +30,7 @@
         {
             this.cancelQuoteBtn = new System.Windows.Forms.Button();
             this.quotesGrid = new System.Windows.Forms.DataGridView();
-            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuoteDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.width = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +56,7 @@
             this.quotesGrid.AllowUserToAddRows = false;
             this.quotesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.quotesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dateTime,
+            this.QuoteDate,
             this.customerName,
             this.depth,
             this.width,
@@ -70,48 +70,56 @@
             this.quotesGrid.Size = new System.Drawing.Size(780, 209);
             this.quotesGrid.TabIndex = 2;
             // 
-            // dateTime
+            // QuoteDate
             // 
-            this.dateTime.Frozen = true;
-            this.dateTime.HeaderText = "Date/Time";
-            this.dateTime.Name = "dateTime";
+            this.QuoteDate.DataPropertyName = "QuoteDate";
+            this.QuoteDate.Frozen = true;
+            this.QuoteDate.HeaderText = "Date/Time";
+            this.QuoteDate.Name = "QuoteDate";
             // 
             // customerName
             // 
+            this.customerName.DataPropertyName = "CustomerName";
             this.customerName.Frozen = true;
             this.customerName.HeaderText = "Customer Name";
             this.customerName.Name = "customerName";
             // 
             // depth
             // 
+            this.depth.DataPropertyName = "Depth";
             this.depth.Frozen = true;
             this.depth.HeaderText = "Depth";
             this.depth.Name = "depth";
             // 
             // width
             // 
+            this.width.DataPropertyName = "Width";
             this.width.Frozen = true;
             this.width.HeaderText = "Width";
             this.width.Name = "width";
             // 
             // numOfDrawers
             // 
+            this.numOfDrawers.DataPropertyName = "NumOfDrawers";
             this.numOfDrawers.Frozen = true;
             this.numOfDrawers.HeaderText = "Number of Drawers";
             this.numOfDrawers.Name = "numOfDrawers";
             // 
             // surfaceMaterial
             // 
+            this.surfaceMaterial.DataPropertyName = "DeskMaterial";
             this.surfaceMaterial.HeaderText = "Surface Material";
             this.surfaceMaterial.Name = "surfaceMaterial";
             // 
             // shipping
             // 
+            this.shipping.DataPropertyName = "Shipping";
             this.shipping.HeaderText = "Shipping";
             this.shipping.Name = "shipping";
             // 
             // price
             // 
+            this.price.DataPropertyName = "Price";
             this.price.HeaderText = "Price";
             this.price.Name = "price";
             // 
@@ -134,7 +142,7 @@
 
         private System.Windows.Forms.Button cancelQuoteBtn;
         private System.Windows.Forms.DataGridView quotesGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuoteDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn depth;
         private System.Windows.Forms.DataGridViewTextBoxColumn width;
