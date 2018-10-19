@@ -9,20 +9,6 @@ namespace MegaDesk_3_KaylaRoberts
 {
     public class DeskQuote
     { 
-
-        // constants
-        const int BASE_DESK_PRICE = 200;
-        const int RUSH_3DAY_LESS_THAN_1000 = 60;
-        const int RUSH_3DAY_LESS_THAN_2000 = 70;
-        const int RUSH_3DAY_GREATER_THAN_2000 = 80;
-        const int RUSH_5DAY_LESS_THAN_1000 = 40;
-        const int RUSH_5DAY_LESS_THAN_2000 = 50;
-        const int RUSH_5DAY_GREATER_THAN_1000 = 60;
-        const int RUSH_7DAY_LESS_THAN_1000 = 30;
-        const int RUSH_7DAY_LESS_THAN_2000 = 35;
-        const int RUSH_7DAY_GREATER_THAN_1000 = 40;
-
-
         public int DeskQuoteID { get; set; }
         public DateTime QuoteDate { get; set; }
         public string CustomerName { get; set; }
@@ -73,7 +59,18 @@ namespace MegaDesk_3_KaylaRoberts
                     break;
             }
 
-            getRushOrder(@"rushOrderPrices.txt");
+            int[ , ] rushOrderArray = getRushOrder(@"rushOrderPrices.txt");
+
+            const int BASE_DESK_PRICE = 200;
+            int RUSH_3DAY_LESS_THAN_1000 = rushOrderArray[0,0];
+            int RUSH_3DAY_LESS_THAN_2000 = rushOrderArray[0,1];
+            int RUSH_3DAY_GREATER_THAN_2000 = rushOrderArray[0, 2];
+            int RUSH_5DAY_LESS_THAN_1000 = rushOrderArray[1, 0];
+            int RUSH_5DAY_LESS_THAN_2000 = rushOrderArray[1, 1];
+            int RUSH_5DAY_GREATER_THAN_1000 = rushOrderArray[1, 2];
+            int RUSH_7DAY_LESS_THAN_1000 = rushOrderArray[2, 0];
+            int RUSH_7DAY_LESS_THAN_2000 = rushOrderArray[2, 1];
+            int RUSH_7DAY_GREATER_THAN_1000 = rushOrderArray[2, 2];
 
             var shippingPrice = 0;
             switch (Shipping)
@@ -130,11 +127,11 @@ namespace MegaDesk_3_KaylaRoberts
             return totalPrice;
         }
 
-        private void getRushOrder(string v)
+        private int[ , ] getRushOrder(string v)
         {
             String[] shippingArray = File.ReadAllLines(v);
 
-            String[ , ] prices = new String[3,3];
+            int[ , ] prices = new int[3,3];
 
             int k = 0;
 
@@ -142,10 +139,12 @@ namespace MegaDesk_3_KaylaRoberts
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    prices[i,j] = shippingArray[k];
+                    prices[i,j] = Int32.Parse(shippingArray[k]);
                     k++;
                 }
             }
+
+            return prices;
         }
     }
 }
