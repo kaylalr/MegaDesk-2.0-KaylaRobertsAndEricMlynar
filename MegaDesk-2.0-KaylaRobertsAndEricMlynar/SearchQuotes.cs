@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk_3_KaylaRoberts
 {
@@ -144,7 +145,8 @@ namespace MegaDesk_3_KaylaRoberts
                     Shipping = d.Shipping,
                     Price = d.Price
                 })
-                //.Where(surfaceMaterialDropDown.SelectedValue == )
+                //.Where()
+                .Where(quote => quote.DeskMaterial.Equals(surfaceMaterialDropDown.SelectedValue))
                 .ToList();
 
             }
